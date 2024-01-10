@@ -1,0 +1,41 @@
+version: '3'
+services:
+  es:
+    image: "elasticsearch:7.12.0"
+    ports:
+      - "127.0.0.1:9200:9200"
+    restart: always
+    privileged: true
+    environment:
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - ./es/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ./es/data:/usr/share/elasticsearch/data
+  redis:
+    restart: always
+    image: "redis:5.0.5"
+    ports:
+      - "127.0.0.1:6379:6379"
+    environment:
+      - REDIS_PASSWORD=honey_redis
+  mysql:
+    image: mysql:8.0.32-debian
+    restart: always
+    volumes:
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/datadir:/var/lib/mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gvb_db
+    ports:
+      - "127.0.0.1:3306:3306"
+

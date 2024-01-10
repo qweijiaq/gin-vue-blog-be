@@ -1,0 +1,7 @@
+.idea
+local_settings.yaml
+.air.toml
+tmp
+main
+gvb_server.exe
+testdata
