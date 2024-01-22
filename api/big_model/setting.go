@@ -1,13 +1,23 @@
 package big_model
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"os"
+	"path"
 	"server/config"
 	"server/global"
 	"server/models"
 	"server/service/common/response"
 	"server/utils/jwts"
 )
+
+const docsPath = "uploads/docs"
+
+type ModelSetting struct {
+	config.Setting
+	Help string `json:"help"`
+}
 
 // ModelSettingView  获取大模型配置
 func (BigModelApi) ModelSettingView(c *gin.Context) {
@@ -19,11 +29,23 @@ func (BigModelApi) ModelSettingView(c *gin.Context) {
 	}
 	if roleId == models.AdminRole {
 		// 管理员
-		response.OkWithData(global.Config.BigModel.Setting, c)
+		ms := ModelSetting{
+			Setting: global.Config.BigModel.Setting,
+		}
+		if ms.Name != "" {
+			filePath := path.Join(docsPath, fmt.Sprintf("%s.md", ms.Name))
+			byteData, err := os.ReadFile(filePath)
+			if err == nil {
+				ms.Help = string(byteData)
+			}
+		}
+		response.OkWithData(ms, c)
 		return
 	}
-	response.OkWithData(config.Setting{
-		Enable: global.Config.BigModel.Setting.Enable,
+	response.OkWithData(ModelSetting{
+		Setting: config.Setting{
+			Enable: global.Config.BigModel.Setting.Enable,
+		},
 	}, c)
 	return
 }
