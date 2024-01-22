@@ -4,7 +4,7 @@ mysql:
   config: charset=utf8mb4&parseTime=True&loc=Local
   db: gvb_db
   user: root
-  password: root
+  password: "123456"
   log_level: dev
 logger:
   level: info
@@ -18,49 +18,49 @@ system:
   env: release
 site_info:
   created_at: "2024-01-01"
-  bei_an: 你的备案号
-  title: ""
-  qq_image: 上传QQ二维码
+  bei_an: 皖ICP备2022012261号-2
+  title: 与蜗牛漫步
+  qq_image: /uploads/file/Gopher/qq_20240108221653.jpg
   version: 2.0.0
-  email: 邮箱
-  wechat_image: 上传微信二维码
-  name: ""
-  job: ""
-  addr: ""
+  email: 2112025700@qq.com
+  wechat_image: /uploads/file/Gopher/wechat_20240108221659.jpg
+  name: 与蜗牛漫步
+  job: 全栈开发
+  addr: 中国重庆
   slogan: 个人博客
   slogan_en: GOPHERBLOG
-  web: 网站线上地址
-  csdn_url: CSDN地址
-  gitee_url: 码云地址
-  github_url: GitHub地址
+  web: http://blog.weijia-top/
+  csdn_url: https://woniu.blog.csdn.net/
+  gitee_url: https://gitee.com/wei_jia0826
+  github_url: https://github.com/qweijiaq
 upload:
-  size: 本地上传最大限制（M）
+  size: 6
   path: uploads/file
 qq:
-  app_id: ""
-  key: ""
-  redirect: ""
+  app_id: "102088326"
+  key: eCXfaIl04uU8ZmkV
+  redirect: http://blog.wei-jia.top/oauth?flag=qq
 qi_niu:
   enable: true
-  access_key: "" # 是否开启七牛云存储
-  secret_key: ""
-  bucket: ""
-  cdn: ""
-  zone: ""
-  prefix: "前缀"
-  size: 七牛云上传最大限制（M）
+  access_key: 20XGZQLc3G3qBbuKm_7ryQ4h3nlGCxU2mvGkwiJF
+  secret_key: 7S6gKqTOHUjg9TjOy-QKwMIQlIqjSEwiyHKFwXkm
+  bucket: emlog-img
+  cdn: http://qiniu.wei-jia.top/
+  zone: z2
+  prefix: GopherBlog
+  size: 6
 email:
   host: smtp.qq.com
   port: 465
-  user: ""
-  password: ""
+  user: 2112025700@qq.com
+  password: qfbftrvsymwabfje
   default_from_email: GopherBlog
   use_ssl: true
   user_tls: false
 jwt:
   secret: '******'
-  expires: 240 # 单位: 小时
-  issuer: ""
+  expires: 240
+  issuer: weijia
 redis:
   ip: 127.0.0.1
   port: 6379
@@ -74,13 +74,36 @@ es:
 chat_group:
   isAnonymous: true
   isShowTime: false
-  defaultLimit: 50 # 初始条数
-  contentLength: 101 # 可发送的文本长度
+  defaultLimit: 50
+  contentLength: 101
   welcomeTitle: 在线聊天室
-  isOnlinePeople: true # 是否显示在线人数
-  isSendImage: true # 是否可以发图片
-  isSendFile: true # 是否可以发文件
-  isMd: true # 是否支持 Markdown
-gaode: # 只要用来获取 IP 和天气
+  isOnlinePeople: true
+  isSendImage: true
+  isSendFile: true
+  isMd: true
+gaode:
   enable: true
-  key: ""
+  key: cdfabcac56fd9f6e2a9319d996ec0a3e
+big_model:
+  name: "生效大模型的名称" # eg. qwen -> 通义千问
+  enable: true # 是否启用
+  api_key: "xxxxx"
+  api_secret: "xxxxx"
+  title: GopherModel
+  prompt: "" # 加强提示词
+  model_list:
+    - label: 通义千问
+      value: qwen
+      disable: false
+    - label: 文心一言
+      value: wenxin
+      disable: true
+    - label: 星火大模型
+      value: xinhuo
+      disable: true
+    - label: 天工大模型
+      value: tiangong
+      disable: true
+    - label: ChatGPT
+      value: chatgpt
+      disable: true

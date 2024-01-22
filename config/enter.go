@@ -14,4 +14,5 @@ type Config struct {
 	ES        ES        `yaml:"es"`
 	ChatGroup ChatGroup `yaml:"chat_group"`
 	Gaode     Gaode     `yaml:"gaode"`
+	BigModel  BigModel  `yaml:"big_model"`
 }
