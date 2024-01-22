@@ -108,5 +108,8 @@ big_model:
     - label: ChatGPT
       value: chatgpt
       disable: true
-  session: # 会话
+  session_setting: # 会话
+    chat_scope:
+    session_scope:
+    day_scope:
 
