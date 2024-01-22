@@ -57,6 +57,8 @@ func InitRouter() *gin.Engine {
 	routerGroupApp.GaodeRouter()
 	// 反馈 API
 	routerGroupApp.FeedbackRouter()
+	// 大模型 API
+	routerGroupApp.BigModelRouter()
 
 	return router
 }

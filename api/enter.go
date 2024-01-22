@@ -3,6 +3,7 @@ package api
 import (
 	"server/api/advert"
 	"server/api/article"
+	"server/api/big_model"
 	"server/api/chat"
 	"server/api/comment"
 	"server/api/data"
@@ -38,6 +39,7 @@ type ApiGroup struct {
 	RoleApi     role.RoleApi
 	GaodeApi    gaode.GaodeApi
 	FeedbackApi feedback.FeedbackApi
+	BigModelApi big_model.BigModelApi
 }
 
 var ApiGroupApp = new(ApiGroup)
