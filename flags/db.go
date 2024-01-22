@@ -26,6 +26,7 @@ func DB() {
 			&models.LoginDataModel{},
 			&models.ChatModel{},
 			&models.FeedbackModel{},
+			&models.UserScopeModel{},
 			&log_stash.LogStashModel{},
 			&logStashV2.LogModel{},
 		)

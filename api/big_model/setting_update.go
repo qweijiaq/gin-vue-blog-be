@@ -31,6 +31,6 @@ func (BigModelApi) ModelSettingUpdateView(c *gin.Context) {
 
 	global.Config.BigModel.Setting = cr
 	core.SetYaml()
-	response.OkWithMessage("更新大模型配置成功", c)
+	response.OkWithMessage("更新成功", c)
 	return
 }

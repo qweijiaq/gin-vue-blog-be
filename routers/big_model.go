@@ -11,4 +11,5 @@ func (router RouterGroup) BigModelRouter() {
 	router.GET("bigModel/setting", app.ModelSettingView)
 	router.PUT("bigModel/setting", middleware.JwtAdmin(), app.ModelSettingUpdateView)
 	router.GET("bigModel/session_setting", middleware.JwtAdmin(), app.ModelSessionSettingView)
+	router.PUT("bigModel/session_setting", middleware.JwtAdmin(), app.ModelSessionSettingUpdateView)
 }

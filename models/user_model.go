@@ -20,7 +20,7 @@ type UserModel struct {
 	IP         string           `gorm:"size:20;comment:ip" json:"ip,select(c)"`                                // ip地址
 	Role       ctype.Role       `gorm:"size:4;default:1;comment:权限，1管理员，2普通用户，3游客" json:"role,select(info)"`   // 权限  1 管理员  2 普通用户  3 游客
 	SignStatus ctype.SignStatus `gorm:"type=smallint(6);comment:注册来源，1qq，3邮箱" json:"sign_status,select(info)"` // 注册来源
-	Integral   int              `gorm:"default:0;comment:我的积分" json:"integral,select(info)"`                   // 我的积分
+	Scope      int              `gorm:"default:0;comment:我的积分" json:"scope,select(info)"`                      // 我的积分
 	Sign       string           `gorm:"size:128;comment:我的签名" json:"sign,select(info)"`                        // 我的签名
 	Link       string           `gorm:"size:128;comment:我的链接地址" json:"link,select(info)"`                      // 我的链接地址
 }
