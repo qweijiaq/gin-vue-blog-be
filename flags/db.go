@@ -26,9 +26,10 @@ func DB() {
 			&models.LoginDataModel{},
 			&models.ChatModel{},
 			&models.FeedbackModel{},
-			&models.UserScopeModel{},
 			&log_stash.LogStashModel{},
 			&logStashV2.LogModel{},
+			&models.UserScopeModel{},
+			&models.AutoReplyModel{},
 		)
 	if err != nil {
 		global.Log.Error("[ error ] 生成数据库表结构失败！")
