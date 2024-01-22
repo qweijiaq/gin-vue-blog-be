@@ -85,12 +85,13 @@ gaode:
   enable: true
   key: cdfabcac56fd9f6e2a9319d996ec0a3e
 big_model:
-  name: "生效大模型的名称" # eg. qwen -> 通义千问
-  enable: true # 是否启用
-  api_key: "xxxxx"
-  api_secret: "xxxxx"
-  title: GopherModel
-  prompt: "" # 加强提示词
+  setting:
+    name: "生效大模型的名称" # eg. qwen -> 通义千问
+    enable: true # 是否启用
+    api_key: "xxxxx"
+    api_secret: "xxxxx"
+    title: GopherModel
+    prompt: "" # 加强提示词
   model_list:
     - label: 通义千问
       value: qwen
@@ -107,3 +108,5 @@ big_model:
     - label: ChatGPT
       value: chatgpt
       disable: true
+  session: # 会话
+

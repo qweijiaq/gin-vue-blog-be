@@ -6,7 +6,7 @@ import (
 	"server/service/common/response"
 )
 
-// ModelUsableListView 可用大模型列表
+// ModelUsableListView 获取可用大模型列表
 func (BigModelApi) ModelUsableListView(c *gin.Context) {
 	response.OkWithData(global.Config.BigModel.ModelList, c)
 	return

@@ -28,3 +28,9 @@ type PageInfo struct {
 	Limit int    `form:"limit"`
 	Sort  string `form:"sort"`
 }
+
+const (
+	AdminRole   = 1
+	UserRole    = 2
+	TouristRole = 3
+)
