@@ -20,4 +20,5 @@ func (router RouterGroup) BigModelRouter() {
 
 	router.PUT("bigModel/tags", middleware.JwtAdmin(), app.TagUpdateView) // 角色标签添加与更新
 	router.GET("bigModel/tags", app.TagListView)                          // 获取角色标签列表
+	router.DELETE("bigModel/tags", app.TagRemoveView)                     // 角色标签删除
 }
