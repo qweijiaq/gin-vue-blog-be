@@ -19,4 +19,5 @@ func (router RouterGroup) BigModelRouter() {
 	router.DELETE("bigModel/auto_reply", middleware.JwtAdmin(), app.AutoReplyRemoveView)             // 删除自动回复规则
 
 	router.PUT("bigModel/tags", middleware.JwtAdmin(), app.TagUpdateView) // 角色标签添加与更新
+	router.GET("bigModel/tags", app.TagListView)                          // 获取角色标签列表
 }
