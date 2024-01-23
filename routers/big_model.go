@@ -16,4 +16,5 @@ func (router RouterGroup) BigModelRouter() {
 	router.POST("bigModel/user_scope", middleware.JwtAuth(), app.UserScopeView)
 	router.PUT("bigModel/auto_reply", middleware.JwtAdmin(), app.AutoReplyUpdateView)
 	router.GET("bigModel/auto_reply", middleware.JwtAdmin(), app.AutoReplyListView)
+	router.DELETE("bigModel/auto_reply", middleware.JwtAdmin(), app.AutoReplyRemoveView)
 }
