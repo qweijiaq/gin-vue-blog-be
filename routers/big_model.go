@@ -22,7 +22,10 @@ func (router RouterGroup) BigModelRouter() {
 	router.GET("bigModel/tags", app.TagListView)                          // 获取标签列表
 	router.DELETE("bigModel/tags", app.TagRemoveView)                     // 标签删除
 
-	router.POST("bigModel/roles", middleware.JwtAdmin(), app.RoleCreateView) // 角色添加
-	router.PUT("bigModel/roles", middleware.JwtAdmin(), app.RoleUpdateView)  // 角色更新
-	router.GET("bigModel/roles", app.RoleListView)                           // 获取角色列表
+	router.POST("bigModel/roles", middleware.JwtAdmin(), app.RoleCreateView)   // 角色添加
+	router.PUT("bigModel/roles", middleware.JwtAdmin(), app.RoleUpdateView)    // 角色更新
+	router.GET("bigModel/roles", app.RoleListView)                             // 获取角色列表
+	router.DELETE("bigModel/roles", middleware.JwtAdmin(), app.RoleRemoveView) // 角色删除
+
+	router.GET("bigModel/square", app.RoleSquareView) // 角色广场
 }

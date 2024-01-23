@@ -45,6 +45,8 @@ func (BigModelApi) ModelSettingView(c *gin.Context) {
 	response.OkWithData(ModelSetting{
 		Setting: config.Setting{
 			Enable: global.Config.BigModel.Setting.Enable,
+			Title:  global.Config.BigModel.Setting.Title,
+			Slogan: global.Config.BigModel.Setting.Slogan,
 		},
 	}, c)
 	return

@@ -92,6 +92,7 @@ big_model:
     api_secret: "xxxxx"
     title: GopherModel
     prompt: "" # 加强提示词
+    slogan: "让更多人用上大模型"
   model_list:
     - label: 通义千问
       value: qwen
