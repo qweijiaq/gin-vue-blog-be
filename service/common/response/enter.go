@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"server/utils"
+	"server/utils/valid"
 )
 
 type Response struct {
@@ -59,6 +60,12 @@ func FailWithMessage(msg string, c *gin.Context) {
 }
 func FailWithError(err error, obj any, c *gin.Context) {
 	msg := utils.GetValidMsg(err, obj)
+	FailWithMessage(msg, c)
+}
+
+// FailWithValidError 参数校验失败
+func FailWithValidError(err error, c *gin.Context) {
+	msg := valid.Error(err)
 	FailWithMessage(msg, c)
 }
 func FailWithCode(code ErrorCode, c *gin.Context) {

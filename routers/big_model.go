@@ -14,4 +14,5 @@ func (router RouterGroup) BigModelRouter() {
 	router.PUT("bigModel/session_setting", middleware.JwtAdmin(), app.ModelSessionSettingUpdateView)
 	router.GET("bigModel/user_scope_enable", middleware.JwtAuth(), app.UserScopeEnableView)
 	router.POST("bigModel/user_scope", middleware.JwtAuth(), app.UserScopeView)
+	router.PUT("bigModel/auto_reply", middleware.JwtAdmin(), app.AutoReplyUpdateView)
 }
