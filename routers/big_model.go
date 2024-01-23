@@ -24,4 +24,5 @@ func (router RouterGroup) BigModelRouter() {
 
 	router.POST("bigModel/roles", middleware.JwtAdmin(), app.RoleCreateView) // 角色添加
 	router.PUT("bigModel/roles", middleware.JwtAdmin(), app.RoleUpdateView)  // 角色更新
+	router.GET("bigModel/roles", app.RoleListView)                           // 获取角色列表
 }
