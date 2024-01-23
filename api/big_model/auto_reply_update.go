@@ -1,8 +1,10 @@
 package big_model
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
+	"regexp"
 	"server/global"
 	"server/models"
 	"server/service/common/response"
@@ -23,6 +25,15 @@ func (BigModelApi) AutoReplyUpdateView(c *gin.Context) {
 	if err != nil {
 		response.FailWithValidError(err, c)
 		return
+	}
+
+	// 如果是正则规则，校验正则表达式格式
+	if cr.Mode == 4 {
+		_, err := regexp.Compile(cr.Rule)
+		if err != nil {
+			response.FailWithMessage(fmt.Sprintf("正则表达式格式错误 %s", err.Error()), c)
+			return
+		}
 	}
 	if cr.ID == 0 {
 		// 	增加
