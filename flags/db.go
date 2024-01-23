@@ -30,6 +30,8 @@ func DB() {
 			&logStashV2.LogModel{},
 			&models.UserScopeModel{},
 			&models.AutoReplyModel{},
+			&models.BigModelRuleModel{},
+			&models.BigModelTagModel{},
 		)
 	if err != nil {
 		global.Log.Error("[ error ] 生成数据库表结构失败！")
