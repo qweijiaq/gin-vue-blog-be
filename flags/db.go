@@ -32,6 +32,8 @@ func DB() {
 			&models.AutoReplyModel{},
 			&models.BigModelRoleModel{},
 			&models.BigModelTagModel{},
+			&models.BigModelChatModel{},
+			&models.BigModelSessionModel{},
 		)
 	if err != nil {
 		global.Log.Error("[ error ] 生成数据库表结构失败！")
