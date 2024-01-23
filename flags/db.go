@@ -30,7 +30,7 @@ func DB() {
 			&logStashV2.LogModel{},
 			&models.UserScopeModel{},
 			&models.AutoReplyModel{},
-			&models.BigModelRuleModel{},
+			&models.BigModelRoleModel{},
 			&models.BigModelTagModel{},
 		)
 	if err != nil {
