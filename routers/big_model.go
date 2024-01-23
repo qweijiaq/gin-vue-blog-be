@@ -18,7 +18,10 @@ func (router RouterGroup) BigModelRouter() {
 	router.GET("bigModel/auto_reply", middleware.JwtAdmin(), app.AutoReplyListView)                  // 获取自动回复规则列表
 	router.DELETE("bigModel/auto_reply", middleware.JwtAdmin(), app.AutoReplyRemoveView)             // 删除自动回复规则
 
-	router.PUT("bigModel/tags", middleware.JwtAdmin(), app.TagUpdateView) // 角色标签添加与更新
-	router.GET("bigModel/tags", app.TagListView)                          // 获取角色标签列表
-	router.DELETE("bigModel/tags", app.TagRemoveView)                     // 角色标签删除
+	router.PUT("bigModel/tags", middleware.JwtAdmin(), app.TagUpdateView) // 标签添加与更新
+	router.GET("bigModel/tags", app.TagListView)                          // 获取标签列表
+	router.DELETE("bigModel/tags", app.TagRemoveView)                     // 标签删除
+
+	router.POST("bigModel/roles", middleware.JwtAdmin(), app.RoleCreateView) // 角色添加
+	router.PUT("bigModel/roles", middleware.JwtAdmin(), app.RoleUpdateView)  // 角色更新
 }
