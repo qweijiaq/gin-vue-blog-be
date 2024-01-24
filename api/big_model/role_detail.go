@@ -18,7 +18,7 @@ type RoleDetailResponse struct {
 
 type TagResponse struct {
 	ID    uint   `json:"id"`
-	Title string `json:"tittle"`
+	Title string `json:"title"`
 	Color string `json:"color"`
 }
 
