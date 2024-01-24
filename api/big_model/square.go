@@ -11,6 +11,7 @@ type RoleItem struct {
 	ID       uint   `json:"id"`       // 角色id
 	Name     string `json:"name"`     // 角色名称
 	Abstract string `json:"abstract"` // 角色简介
+	Icon     string `json:"icon"`
 }
 
 type TagRoleListResponse struct {
