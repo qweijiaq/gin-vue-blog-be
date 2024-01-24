@@ -55,5 +55,6 @@ func (router RouterGroup) BigModelRouter() {
 		router.GET("bigModel/chats", middleware.JwtAuth(), app.ChatListView)              // 对话列表
 		router.POST("bigModel/chats", middleware.JwtAuth(), app.ChatCreateView)           // 用户创建对话
 		router.DELETE("bigModel/chats/:id", middleware.JwtAuth(), app.ChatUserRemoveView) // 用户删除对话
+		router.DELETE("bigModel/chats", middleware.JwtAdmin(), app.ChatRemoveView)        // 管理员删除对话
 	}
 }
