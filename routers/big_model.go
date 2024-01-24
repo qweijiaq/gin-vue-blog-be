@@ -26,6 +26,7 @@ func (router RouterGroup) BigModelRouter() {
 	router.PUT("bigModel/roles", middleware.JwtAdmin(), app.RoleUpdateView)    // 角色更新
 	router.GET("bigModel/roles", app.RoleListView)                             // 获取角色列表
 	router.DELETE("bigModel/roles", middleware.JwtAdmin(), app.RoleRemoveView) // 角色删除
+	router.GET("bigModel/square", app.RoleSquareView)                          // 角色广场
 
-	router.GET("bigModel/square", app.RoleSquareView) // 角色广场
+	router.POST("bigModel/sessions", middleware.JwtAuth(), app.SessionCreateView) // 创建会话
 }
