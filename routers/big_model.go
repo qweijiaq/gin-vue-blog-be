@@ -29,5 +29,6 @@ func (router RouterGroup) BigModelRouter() {
 	router.GET("bigModel/square", app.RoleSquareView)                          // 角色广场
 
 	router.POST("bigModel/sessions", middleware.JwtAuth(), app.SessionCreateView) // 创建会话
+	router.GET("bigModel/sessions", middleware.JwtAuth(), app.SessionListView)    // 获取会话列表
 	router.POST("bigModel/chats", middleware.JwtAuth(), app.ChatCreateView)       // 创建会话
 }

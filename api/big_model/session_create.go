@@ -51,7 +51,7 @@ func (BigModelApi) SessionCreateView(c *gin.Context) {
 
 	// 名字默认就是新的会话
 	// 如果用户创建了一个新的会话，但是没有聊天，那就不能创建
-	// 找这个用户相关的ai角色，有没有空的对话记录 > 1
+	// 找这个用户相关的 AI 角色，有没有空的对话记录 > 1
 	var sessionList []models.BigModelSessionModel
 	global.DB.Preload("ChatList").Find(&sessionList, "user_id = ? and role_id = ?", claims.UserID, cr.RoleID)
 	var ok bool
@@ -68,6 +68,7 @@ func (BigModelApi) SessionCreateView(c *gin.Context) {
 	var session = models.BigModelSessionModel{
 		UserID: claims.UserID,
 		RoleID: cr.RoleID,
+		Name:   "新的会话",
 	}
 	global.DB.Create(&session)
 
