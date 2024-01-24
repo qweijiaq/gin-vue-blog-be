@@ -28,8 +28,10 @@ func (router RouterGroup) BigModelRouter() {
 	router.DELETE("bigModel/roles", middleware.JwtAdmin(), app.RoleRemoveView) // 角色删除
 	router.GET("bigModel/square", app.RoleSquareView)                          // 角色广场
 
-	router.POST("bigModel/sessions", middleware.JwtAuth(), app.SessionCreateView)    // 用户创建会话
-	router.GET("bigModel/sessions", middleware.JwtAuth(), app.SessionListView)       // 用户获取会话列表
-	router.PUT("bigModel/sessions", middleware.JwtAuth(), app.SessionUpdateNameView) // 用户修改会话名称
-	router.POST("bigModel/chats", middleware.JwtAuth(), app.ChatCreateView)          // 用户创建对话
+	router.POST("bigModel/sessions", middleware.JwtAuth(), app.SessionCreateView)          // 用户创建会话
+	router.GET("bigModel/sessions", middleware.JwtAuth(), app.SessionListView)             // 用户获取会话列表
+	router.PUT("bigModel/sessions", middleware.JwtAuth(), app.SessionUpdateNameView)       // 用户修改会话名称
+	router.POST("bigModel/chats", middleware.JwtAuth(), app.ChatCreateView)                // 用户创建对话
+	router.DELETE("bigModel/session/:id", middleware.JwtAuth(), app.SessionUserRemoveView) // 用户删除会话
+	router.DELETE("bigModel/sessions", middleware.JwtAdmin(), app.SessionRemoveView)       // 管理员删除会话
 }
