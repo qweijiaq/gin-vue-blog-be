@@ -41,6 +41,7 @@ func (router RouterGroup) BigModelRouter() {
 		router.GET("bigModel/tags/options", middleware.JwtAdmin(), app.TagOptionsListView)     // 获取角色标签 ID 列表
 		router.DELETE("bigModel/tags", middleware.JwtAdmin(), app.TagRemoveView)               // 角色标签删除
 		router.GET("bigModel/icons", app.IconListView)                                         // 角色可选的图标列表
+		router.GET("bigModel/role_sessions", middleware.JwtAuth(), app.RoleSessionListView)
 	}
 
 	// 会话相关
