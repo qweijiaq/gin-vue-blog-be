@@ -9,7 +9,7 @@ import (
 type QwenModel struct {
 }
 
-func (QwenModel) Send(content string) (reply string, err error) {
+func (QwenModel) Send(content string) (reply interface{}, err error) {
 	accessKeyId := "LTAI5tFcbxzcWe2aEmAZzqh7"
 	accessKeySecret := "h8QJEAzdBLeFZVO0HkN5mZdl9jYINM"
 	agentKey := "002cba9a21164ab6870431ccec79c53b_p_efm"
@@ -20,7 +20,7 @@ func (QwenModel) Send(content string) (reply string, err error) {
 	token, err := tokenClient.GetToken()
 	if err != nil {
 		log.Printf("%v\n", err)
-		return "获取 token 失败", err
+		return nil, err
 	}
 
 	cc := client.CompletionClient{Token: &token}
@@ -28,13 +28,14 @@ func (QwenModel) Send(content string) (reply string, err error) {
 
 	request := &client.CompletionRequest{}
 	request.SetAppId(appId)
+	request.SetStream(true)
 	request.SetPrompt(prompt)
 
-	response, err := cc.CreateCompletion(request)
+	res, err := cc.CreateStreamCompletion(request)
 	if err != nil {
 		fmt.Println(err)
-		return "生成回答失败", err
+		return nil, err
 	}
 
-	return response.GetData().GetText(), nil
+	return res, nil
 }

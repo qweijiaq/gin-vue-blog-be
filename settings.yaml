@@ -14,7 +14,7 @@ logger:
   log_in_console: true
 system:
   host: 0.0.0.0
-  port: 3001
+  port: 3333
   env: release
 site_info:
   created_at: "2024-01-01"
@@ -86,7 +86,7 @@ gaode:
   key: cdfabcac56fd9f6e2a9319d996ec0a3e
 big_model:
   setting:
-    name: "生效大模型的名称" # eg. qwen -> 通义千问
+    name: "qwen" # eg. qwen -> 通义千问
     enable: true # 是否启用
     api_key: "xxxxx"
     api_secret: "xxxxx"

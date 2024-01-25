@@ -3,10 +3,10 @@ package big_model
 import "errors"
 
 type BigModelInterface interface {
-	Send(content string) (reply string, err error)
+	Send(content string) (reply any, err error)
 }
 
-func Send(name string, content string) (reply string, err error) {
+func Send(name string, content string) (reply any, err error) {
 	var ser BigModelInterface
 	switch name {
 	case "qwen":
