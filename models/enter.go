@@ -29,9 +29,9 @@ type PageInfo struct {
 	Sort  string `form:"sort"`
 }
 
-type Options struct {
+type Options[T any] struct {
 	Label string `json:"label"`
-	Value string `json:"value"`
+	Value T      `json:"value"`
 }
 
 const (
