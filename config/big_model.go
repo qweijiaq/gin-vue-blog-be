@@ -1,13 +1,11 @@
 package config
 
 type Setting struct {
-	Name      string `yaml:"name" json:"name"`
-	Enable    bool   `yaml:"enable" json:"enable"`
-	ApiKey    string `yaml:"api_key" json:"api_key"`
-	ApiSecret string `yaml:"api_secret" json:"api_secret"`
-	Title     string `yaml:"title" json:"title"`
-	Prompt    string `yaml:"prompt" json:"prompt"`
-	Slogan    string `yaml:"slogan" json:"slogan"`
+	Name   string `yaml:"name" json:"name"`
+	Enable bool   `yaml:"enable" json:"enable"`
+	Title  string `yaml:"title" json:"title"`
+	Prompt string `yaml:"prompt" json:"prompt"`
+	Slogan string `yaml:"slogan" json:"slogan"`
 }
 
 type ModelOption struct {

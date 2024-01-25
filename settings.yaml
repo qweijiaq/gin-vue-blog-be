@@ -18,49 +18,49 @@ system:
   env: release
 site_info:
   created_at: "2024-01-01"
-  bei_an: 皖ICP备2022012261号-2
+  bei_an: 你的备案号
   title: 与蜗牛漫步
   qq_image: /uploads/file/Gopher/qq_20240108221653.jpg
   version: 2.0.0
-  email: 2112025700@qq.com
+  email: 你的邮箱
   wechat_image: /uploads/file/Gopher/wechat_20240108221659.jpg
   name: 与蜗牛漫步
   job: 全栈开发
-  addr: 中国重庆
+  addr: 地址
   slogan: 个人博客
   slogan_en: GOPHERBLOG
-  web: http://blog.weijia-top/
-  csdn_url: https://woniu.blog.csdn.net/
-  gitee_url: https://gitee.com/wei_jia0826
-  github_url: https://github.com/qweijiaq
+  web: 博客地址
+  csdn_url: CSDN 地址
+  gitee_url: Gitee地址
+  github_url: GitHub地址
 upload:
   size: 6
   path: uploads/file
 qq:
-  app_id: "102088326"
-  key: eCXfaIl04uU8ZmkV
-  redirect: http://blog.wei-jia.top/oauth?flag=qq
+  app_id: "appID"
+  key: "appKey"
+  redirect: "回调地址"
 qi_niu:
   enable: true
-  access_key: 20XGZQLc3G3qBbuKm_7ryQ4h3nlGCxU2mvGkwiJF
-  secret_key: 7S6gKqTOHUjg9TjOy-QKwMIQlIqjSEwiyHKFwXkm
-  bucket: emlog-img
-  cdn: http://qiniu.wei-jia.top/
-  zone: z2
-  prefix: GopherBlog
-  size: 6
+  access_key: "accessKey"
+  secret_key: "secretKey"
+  bucket: "bucket名"
+  cdn: "CDN加速域名"
+  zone: 地区
+  prefix: 前缀
+  size: 6 # 最大上传图片大小，单位 M
 email:
   host: smtp.qq.com
   port: 465
-  user: 2112025700@qq.com
-  password: qfbftrvsymwabfje
+  user: 邮箱
+  password: 授权码
   default_from_email: GopherBlog
   use_ssl: true
   user_tls: false
 jwt:
   secret: '******'
   expires: 240
-  issuer: weijia
+  issuer: 颁发人，随便填
 redis:
   ip: 127.0.0.1
   port: 6379
@@ -83,13 +83,11 @@ chat_group:
   isMd: true
 gaode:
   enable: true
-  key: cdfabcac56fd9f6e2a9319d996ec0a3e
+  key: 高德对应的key
 big_model:
   setting:
     name: "qwen" # eg. qwen -> 通义千问
     enable: true # 是否启用
-    api_key: "xxxxx"
-    api_secret: "xxxxx"
     title: GopherModel
     prompt: "" # 加强提示词
     slogan: "让更多人用上大模型"

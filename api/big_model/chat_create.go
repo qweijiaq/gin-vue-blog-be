@@ -78,14 +78,15 @@ func (BigModelApi) ChatCreateView(c *gin.Context) {
 		return false
 	})
 
-	err = global.DB.Create(&models.BigModelChatModel{
+	var chatModel = models.BigModelChatModel{
 		SessionID:  cr.SessionID,
 		Status:     true,
 		Content:    cr.Content,
 		BotContent: botContent,
 		RoleID:     session.RoleID,
 		UserID:     claims.UserID,
-	}).Error
+	}
+	err = global.DB.Create(&chatModel).Error
 	if err != nil {
 		response.FailWithMessageSSE("对话创建失败", c)
 		return
@@ -93,5 +94,5 @@ func (BigModelApi) ChatCreateView(c *gin.Context) {
 
 	// 扣用户的积分
 	global.DB.Model(&user).Update("scope", gorm.Expr("scope - ?", scope))
-	response.Ok("", "对话创建成功", c)
+	response.OkWithSSE(chatModel.ID, "ok", c)
 }

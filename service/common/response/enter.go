@@ -54,6 +54,15 @@ func OkWithDataSSE(data any, c *gin.Context) {
 	c.SSEvent("", content)
 }
 
+func OkWithSSE(data any, msg string, c *gin.Context) {
+	content := Response{
+		Code: Success,
+		Data: data,
+		Msg:  msg,
+	}.Json()
+	c.SSEvent("", content)
+}
+
 func OkWithList(list any, count int64, c *gin.Context) {
 	OkWithData(ListResponse[any]{
 		List:  list,
