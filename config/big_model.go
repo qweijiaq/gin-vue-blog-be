@@ -11,9 +11,13 @@ type Setting struct {
 }
 
 type ModelOption struct {
-	Label   string `yaml:"label" json:"label"`
-	Value   string `yaml:"value" json:"value"`
-	Disable bool   `yaml:"disable" json:"disable"`
+	Label           string `yaml:"label" json:"label"`
+	Value           string `yaml:"value" json:"value"`
+	Disable         bool   `yaml:"disable" json:"disable"`
+	AccessKeyId     string `yaml:"access_key_id" json:"access_key_id"`
+	AccessKeySecret string `yaml:"access_key_secret" json:"access_key_secret"`
+	AgentKey        string `yaml:"agent_key" json:"agent_key"`
+	AppId           string `yaml:"app_id" json:"app_id"`
 }
 
 type SessionSetting struct {

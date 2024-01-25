@@ -62,11 +62,27 @@ func (BigModelApi) ChatCreateView(c *gin.Context) {
 		return
 	}
 
+	reply, err := big_model.Send(cr.SessionID, cr.Content)
+	if err != nil {
+		response.FailWithMessageSSE(err.Error(), c)
+		return
+	}
+
+	var botContent string
+	c.Stream(func(w io.Writer) bool {
+		if r, ok := <-reply.(chan *broadscope_bailian.CompletionResponse); ok {
+			response.OkWithDataSSE(r.GetData().GetText(), c)
+			botContent = r.GetData().GetText()
+			return true
+		}
+		return false
+	})
+
 	err = global.DB.Create(&models.BigModelChatModel{
 		SessionID:  cr.SessionID,
 		Status:     true,
 		Content:    cr.Content,
-		BotContent: "你好",
+		BotContent: botContent,
 		RoleID:     session.RoleID,
 		UserID:     claims.UserID,
 	}).Error
@@ -75,21 +91,7 @@ func (BigModelApi) ChatCreateView(c *gin.Context) {
 		return
 	}
 
-	reply, err := big_model.Send(global.Config.BigModel.Setting.Name, cr.Content)
-	if err != nil {
-		response.FailWithMessageSSE(err.Error(), c)
-		return
-	}
-
-	c.Stream(func(w io.Writer) bool {
-		if r, ok := <-reply.(chan *broadscope_bailian.CompletionResponse); ok {
-			response.OkWithDataSSE(r.GetData().GetText(), c)
-			return true
-		}
-		return false
-	})
-
 	// 扣用户的积分
 	global.DB.Model(&user).Update("scope", gorm.Expr("scope - ?", scope))
-	response.Ok("你好", "对话创建成功", c)
+	response.Ok("", "对话创建成功", c)
 }

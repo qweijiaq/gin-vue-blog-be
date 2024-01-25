@@ -1,19 +1,35 @@
 package big_model
 
 import (
+	"errors"
 	"fmt"
 	client "github.com/aliyun/alibabacloud-bailian-go-sdk/client"
 	"log"
+	"server/global"
+	"server/models"
+	"strconv"
 )
 
 type QwenModel struct {
+	SessionID uint
 }
 
-func (QwenModel) Send(content string) (reply interface{}, err error) {
-	accessKeyId := "LTAI5tFcbxzcWe2aEmAZzqh7"
-	accessKeySecret := "h8QJEAzdBLeFZVO0HkN5mZdl9jYINM"
-	agentKey := "002cba9a21164ab6870431ccec79c53b_p_efm"
-	appId := "7e08b841ff174e4cbb155a1f9db0d1b3"
+func (qwen QwenModel) Send(content string) (reply interface{}, err error) {
+	modelList := global.Config.BigModel.ModelList
+	var accessKeyId string
+	var accessKeySecret string
+	var agentKey string
+	var appId string
+
+	for _, model := range modelList {
+		if model.Value == "qwen" {
+			accessKeyId = model.AccessKeyId
+			accessKeySecret = model.AccessKeySecret
+			agentKey = model.AgentKey
+			appId = model.AppId
+			break
+		}
+	}
 
 	// 尽量避免多次初始化
 	tokenClient := client.AccessTokenClient{AccessKeyId: &accessKeyId, AccessKeySecret: &accessKeySecret, AgentKey: &agentKey}
@@ -30,6 +46,24 @@ func (QwenModel) Send(content string) (reply interface{}, err error) {
 	request.SetAppId(appId)
 	request.SetStream(true)
 	request.SetPrompt(prompt)
+
+	sessionId := strconv.Itoa(int(qwen.SessionID))
+	request.SetSessionId(sessionId)
+
+	var sessionModel models.BigModelSessionModel
+	err = global.DB.Preload("RoleModel").Take(&sessionModel, qwen.SessionID).Error
+	if err != nil {
+		return nil, errors.New("会话不存在")
+	}
+	rawPrompt := &client.ChatQaMessage{User: sessionModel.RoleModel.Prompt, Bot: "好的"}
+	chatHistory := []*client.ChatQaMessage{rawPrompt}
+	request.SetHistory(chatHistory)
+
+	// 查当前这个会话都聊了哪些内容
+	if qwen.SessionID != 0 {
+		var chatList []models.BigModelChatModel
+		global.DB.Find(&chatList, "session_id = ?", qwen.SessionID)
+	}
 
 	res, err := cc.CreateStreamCompletion(request)
 	if err != nil {

@@ -1,16 +1,19 @@
 package big_model
 
-import "errors"
+import (
+	"errors"
+	"server/global"
+)
 
 type BigModelInterface interface {
 	Send(content string) (reply any, err error)
 }
 
-func Send(name string, content string) (reply any, err error) {
+func Send(sessionId uint, content string) (reply any, err error) {
 	var ser BigModelInterface
-	switch name {
+	switch global.Config.BigModel.Setting.Name {
 	case "qwen":
-		ser = QwenModel{}
+		ser = QwenModel{SessionID: sessionId}
 	case "wenxin":
 	case "xinghuo":
 	case "tiangong":
