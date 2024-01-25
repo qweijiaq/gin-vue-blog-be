@@ -97,10 +97,10 @@ big_model:
     - label: 通义千问
       value: qwen
       disable: false
-      access_key_id: LTAI5tFcbxzcWe2aEmAZzqh7
-      access_key_secret: h8QJEAzdBLeFZVO0HkN5mZdl9jYINM
-      agent_key: 002cba9a21164ab6870431ccec79c53b_p_efm
-      app_id: 7e08b841ff174e4cbb155a1f9db0d1b3
+      access_key_id: ""
+      access_key_secret: ""
+      agent_key: ""
+      app_id: ""
     - label: 文心一言
       value: wenxin
       disable: true

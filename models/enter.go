@@ -29,6 +29,11 @@ type PageInfo struct {
 	Sort  string `form:"sort"`
 }
 
+type Options struct {
+	Label string `json:"label"`
+	Value string `json:"value"`
+}
+
 const (
 	AdminRole   = 1
 	UserRole    = 2

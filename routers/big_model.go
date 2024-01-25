@@ -32,12 +32,13 @@ func (router RouterGroup) BigModelRouter() {
 		router.GET("bigModel/roles/:id", middleware.JwtAuth(), app.RoleListView)               // 角色详情
 		router.POST("bigModel/roles", middleware.JwtAdmin(), app.RoleCreateView)               // 角色添加
 		router.PUT("bigModel/roles", middleware.JwtAdmin(), app.RoleUpdateView)                // 角色更新
-		router.GET("bigModel/roles", middleware.JwtAuth(), app.RoleListView)                   // 角色列表                      // 获取角色列表
+		router.GET("bigModel/roles", middleware.JwtAuth(), app.RoleListView)                   // 获取角色列表
 		router.DELETE("bigModel/roles", middleware.JwtAdmin(), app.RoleRemoveView)             // 角色删除
 		router.GET("bigModel/square", app.RoleSquareView)                                      // 角色广场
 		router.GET("bigModel/role_history", middleware.JwtAuth(), app.RoleUserHistoryListView) // 角色历史列表
 		router.PUT("bigModel/tags", middleware.JwtAdmin(), app.TagUpdateView)                  // 角色标签添加与更新
 		router.GET("bigModel/tags", middleware.JwtAdmin(), app.TagListView)                    // 获取角色标签列表
+		router.GET("bigModel/tags/options", middleware.JwtAdmin(), app.TagOptionsListView)     // 获取角色标签 ID 列表
 		router.DELETE("bigModel/tags", middleware.JwtAdmin(), app.TagRemoveView)               // 角色标签删除
 	}
 
