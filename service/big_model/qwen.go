@@ -15,21 +15,10 @@ type QwenModel struct {
 }
 
 func (qwen QwenModel) Send(content string) (reply interface{}, err error) {
-	modelList := global.Config.BigModel.ModelList
-	var accessKeyId string
-	var accessKeySecret string
-	var agentKey string
-	var appId string
-
-	for _, model := range modelList {
-		if model.Value == "qwen" {
-			accessKeyId = model.AccessKeyId
-			accessKeySecret = model.AccessKeySecret
-			agentKey = model.AgentKey
-			appId = model.AppId
-			break
-		}
-	}
+	var accessKeyId = global.Config.BigModel.Setting.AccessKeyId
+	var accessKeySecret = global.Config.BigModel.Setting.AccessKeySecret
+	var agentKey = global.Config.BigModel.Setting.AgentKey
+	var appId = global.Config.BigModel.Setting.AppId
 
 	// 尽量避免多次初始化
 	tokenClient := client.AccessTokenClient{AccessKeyId: &accessKeyId, AccessKeySecret: &accessKeySecret, AgentKey: &agentKey}

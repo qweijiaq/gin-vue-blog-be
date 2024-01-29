@@ -1,21 +1,22 @@
 package config
 
 type Setting struct {
-	Name   string `yaml:"name" json:"name"`
-	Enable bool   `yaml:"enable" json:"enable"`
-	Title  string `yaml:"title" json:"title"`
-	Prompt string `yaml:"prompt" json:"prompt"`
-	Slogan string `yaml:"slogan" json:"slogan"`
-}
-
-type ModelOption struct {
-	Label           string `yaml:"label" json:"label"`
-	Value           string `yaml:"value" json:"value"`
-	Disable         bool   `yaml:"disable" json:"disable"`
+	Name            string `yaml:"name" json:"name"`
+	Enable          bool   `yaml:"enable" json:"enable"`
+	Order           int    `yaml:"order" json:"order"`
+	Title           string `yaml:"title" json:"title"`
+	Prompt          string `yaml:"prompt" json:"prompt"`
+	Slogan          string `yaml:"slogan" json:"slogan"`
 	AccessKeyId     string `yaml:"access_key_id" json:"access_key_id"`
 	AccessKeySecret string `yaml:"access_key_secret" json:"access_key_secret"`
 	AgentKey        string `yaml:"agent_key" json:"agent_key"`
 	AppId           string `yaml:"app_id" json:"app_id"`
+}
+
+type ModelOption struct {
+	Label    string `yaml:"label" json:"label"`
+	Value    string `yaml:"value" json:"value"`
+	Disabled bool   `yaml:"disabled" json:"disabled"`
 }
 
 type SessionSetting struct {

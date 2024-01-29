@@ -16,7 +16,7 @@ type RoleCreateRequest struct {
 	Scope     int    `json:"scope"`                       // 消耗的积分
 	Prologue  string `binding:"required" json:"prologue"` // 开场白
 	Prompt    string `binding:"required" json:"prompt"`   // 设定词
-	AutoReply bool   `json:"autoReply"`                   // 自动回复
+	AutoReply bool   `json:"auto_reply"`                  // 自动回复
 	TagList   []uint `json:"tagList"`                     // 标签的id列表
 
 }

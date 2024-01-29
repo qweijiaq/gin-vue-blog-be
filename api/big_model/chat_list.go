@@ -10,7 +10,7 @@ import (
 )
 
 type ChatListRequest struct {
-	SessionID uint `json:"sessionID" form:"sessionID" binding:"required"`
+	SessionID uint `json:"sessionId" form:"sessionId" binding:"required"`
 	models.PageInfo
 }
 type ChatListResponse struct {
@@ -45,6 +45,9 @@ func (BigModelApi) ChatListView(c *gin.Context) {
 			return
 		}
 	}
+
+	cr.Sort = "created_at asc"
+	cr.Limit = -1
 
 	_list, count, _ := common.ComList(models.BigModelChatModel{SessionID: cr.SessionID}, common.Option{
 		PageInfo: cr.PageInfo,

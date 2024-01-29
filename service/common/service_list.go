@@ -63,6 +63,10 @@ func ComList[T any](model T, option Option) (list []T, count int64, err error) {
 	// 计算偏移
 	offset := (option.Page - 1) * option.Limit
 
+	if option.Limit == -1 {
+		offset = 0
+	}
+
 	err = query.Limit(option.Limit).
 		Offset(offset).
 		Order(option.Sort).Find(&list).Error

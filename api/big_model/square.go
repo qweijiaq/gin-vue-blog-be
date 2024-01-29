@@ -34,6 +34,7 @@ func (BigModelApi) RoleSquareView(c *gin.Context) {
 				ID:       role.ID,
 				Name:     role.Name,
 				Abstract: role.Abstract,
+				Icon:     role.Icon,
 			})
 		}
 		list = append(list, TagRoleListResponse{

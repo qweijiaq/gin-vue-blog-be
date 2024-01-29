@@ -7,9 +7,6 @@ import (
 	"server/service/common/response"
 )
 
-type SessionListRequest struct {
-	models.PageInfo
-}
 type SessionListResponse struct {
 	models.MODEL
 	UserID      uint   `json:"userID"`
@@ -22,10 +19,12 @@ type SessionListResponse struct {
 
 // SessionListView 会话列表
 func (BigModelApi) SessionListView(c *gin.Context) {
-	var cr SessionListRequest
+	var cr models.PageInfo
 	c.ShouldBindQuery(&cr)
 	_list, count, _ := common.ComList(models.BigModelSessionModel{}, common.Option{
-		Preload: []string{"UserModel", "RoleModel", "ChatList"},
+		PageInfo: cr,
+		Likes:    []string{"Name"},
+		Preload:  []string{"UserModel", "RoleModel", "ChatList"},
 	})
 	var list = make([]SessionListResponse, 0)
 	for _, model := range _list {

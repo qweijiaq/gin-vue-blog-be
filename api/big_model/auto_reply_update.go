@@ -38,8 +38,8 @@ func (BigModelApi) AutoReplyUpdateView(c *gin.Context) {
 	if cr.ID == 0 {
 		// 	增加
 		var arm models.AutoReplyModel
-		err = global.DB.Take(&arm, "name = ?", cr.Name, cr.Mode).Error
-		if err != nil {
+		err = global.DB.Take(&arm, "name = ?", cr.Name).Error
+		if err == nil {
 			response.FailWithMessage("规则名称不能相同", c)
 			return
 		}
@@ -68,7 +68,7 @@ func (BigModelApi) AutoReplyUpdateView(c *gin.Context) {
 	// name 不能再重复了
 	var arm1 models.AutoReplyModel
 	err = global.DB.Take(&arm1, "name = ? and id <> ?", cr.Name, cr.ID).Error
-	if err != nil {
+	if err == nil {
 		response.FailWithMessage("规则名称不能和已有规则相重复", c)
 		return
 	}
@@ -83,6 +83,6 @@ func (BigModelApi) AutoReplyUpdateView(c *gin.Context) {
 		response.FailWithMessage("规则更新失败", c)
 		return
 	}
-	response.FailWithMessage("规则更新成功", c)
+	response.OkWithMessage("规则更新成功", c)
 	return
 }

@@ -19,8 +19,9 @@ func (BigModelApi) TagListView(c *gin.Context) {
 	var cr models.PageInfo
 	c.ShouldBindQuery(&cr)
 	_list, count, _ := common.ComList(models.BigModelTagModel{}, common.Option{
-		Likes:   []string{"title"},
-		Preload: []string{"Roles"},
+		Likes:    []string{"Title"},
+		Preload:  []string{"Roles"},
+		PageInfo: cr,
 	})
 	var list = make([]TagListResponse, 0)
 	for _, model := range _list {

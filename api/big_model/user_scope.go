@@ -41,6 +41,10 @@ func (BigModelApi) UserScopeView(c *gin.Context) {
 		response.FailWithMessage("用户不存在", c)
 		return
 	}
+	if cr.Status == false {
+		response.OkWithMessage("", c)
+		return
+	}
 	// 给用户加积分
 	scope := global.Config.BigModel.SessionSetting.DayScope
 	global.DB.Model(&user).Update("scope", gorm.Expr("scope + ?", scope))

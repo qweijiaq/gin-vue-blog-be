@@ -30,6 +30,7 @@ func (BigModelApi) RoleDetailView(c *gin.Context) {
 		response.FailWithValidError(err, c)
 		return
 	}
+	sessionId := c.Query("sessionId")
 	var arm models.BigModelRoleModel
 	err = global.DB.Preload("Tags").Take(&arm, cr.ID).Error
 	if err != nil {
@@ -54,7 +55,7 @@ func (BigModelApi) RoleDetailView(c *gin.Context) {
 	}
 
 	// 找这个角色进行了多少次对话
-	global.DB.Model(models.BigModelChatModel{}).Where("role_id = ?", cr.ID).Count(&res.ChatCount)
+	global.DB.Model(models.BigModelChatModel{}).Where("role_id = ? and session_id = ?", cr.ID, sessionId).Count(&res.ChatCount)
 
 	response.OkWithData(res, c)
 }

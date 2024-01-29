@@ -10,7 +10,7 @@ import (
 	"server/global"
 )
 
-const ConfigFile = "settings.yaml"
+const ConfigFile = "settings_copy.yaml"
 
 // InitConf 读取 YAML 文件的配置
 func InitConf() {

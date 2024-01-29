@@ -88,29 +88,30 @@ big_model:
   setting:
     name: "qwen" # eg. qwen -> 通义千问
     enable: true # 是否启用
+    order: 0
     title: GopherModel
     prompt: "" # 加强提示词
     slogan: "让更多人用上大模型"
+    access_key_id: ""
+    access_key_secret: ""
+    agent_key: ""
+    app_id: ""
   model_list:
     - label: 通义千问
       value: qwen
-      disable: false
-      access_key_id: ""
-      access_key_secret: ""
-      agent_key: ""
-      app_id: ""
+      disabled: false
     - label: 文心一言
       value: wenxin
-      disable: true
+      disabled: true
     - label: 星火大模型
       value: xinhuo
-      disable: true
+      disabled: true
     - label: 天工大模型
       value: tiangong
-      disable: true
+      disabled: true
     - label: ChatGPT
       value: chatgpt
-      disable: true
+      disabled: true
   session_setting: # 会话
     chat_scope:
     session_scope:

@@ -29,7 +29,7 @@ func (router RouterGroup) BigModelRouter() {
 
 	// 角色相关
 	{
-		router.GET("bigModel/roles/:id", middleware.JwtAuth(), app.RoleListView)               // 角色详情
+		router.GET("bigModel/roles/:id", middleware.JwtAuth(), app.RoleDetailView)             // 角色详情
 		router.POST("bigModel/roles", middleware.JwtAdmin(), app.RoleCreateView)               // 角色添加
 		router.PUT("bigModel/roles", middleware.JwtAdmin(), app.RoleUpdateView)                // 角色更新
 		router.GET("bigModel/roles", middleware.JwtAuth(), app.RoleListView)                   // 获取角色列表
@@ -41,16 +41,16 @@ func (router RouterGroup) BigModelRouter() {
 		router.GET("bigModel/tags/options", middleware.JwtAdmin(), app.TagOptionsListView)     // 获取角色标签 ID 列表
 		router.DELETE("bigModel/tags", middleware.JwtAdmin(), app.TagRemoveView)               // 角色标签删除
 		router.GET("bigModel/icons", app.IconListView)                                         // 角色可选的图标列表
-		router.GET("bigModel/role_sessions", middleware.JwtAuth(), app.RoleSessionListView)
+		router.GET("bigModel/role_sessions", middleware.JwtAuth(), app.RoleSessionListView)    // 角色会话列表
 	}
 
 	// 会话相关
 	{
-		router.POST("bigModel/sessions", middleware.JwtAuth(), app.SessionCreateView)          // 用户创建会话
-		router.GET("bigModel/sessions", middleware.JwtAuth(), app.SessionListView)             // 用户获取会话列表
-		router.PUT("bigModel/sessions", middleware.JwtAuth(), app.SessionUpdateNameView)       // 用户修改会话名称
-		router.DELETE("bigModel/session/:id", middleware.JwtAuth(), app.SessionUserRemoveView) // 用户删除会话
-		router.DELETE("bigModel/sessions", middleware.JwtAdmin(), app.SessionRemoveView)       // 管理员删除会话
+		router.POST("bigModel/sessions", middleware.JwtAuth(), app.SessionCreateView)           // 用户创建会话
+		router.GET("bigModel/sessions", middleware.JwtAuth(), app.SessionListView)              // 用户获取会话列表
+		router.PUT("bigModel/sessions", middleware.JwtAuth(), app.SessionUpdateNameView)        // 用户修改会话名称
+		router.DELETE("bigModel/sessions/:id", middleware.JwtAuth(), app.SessionUserRemoveView) // 用户删除会话
+		router.DELETE("bigModel/sessions", middleware.JwtAdmin(), app.SessionRemoveView)        // 管理员删除会话
 	}
 
 	// 对话相关

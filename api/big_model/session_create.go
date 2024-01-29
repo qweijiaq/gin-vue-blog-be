@@ -55,13 +55,15 @@ func (BigModelApi) SessionCreateView(c *gin.Context) {
 	var sessionList []models.BigModelSessionModel
 	global.DB.Preload("ChatList").Find(&sessionList, "user_id = ? and role_id = ?", claims.UserID, cr.RoleID)
 	var ok bool
+	var sessionID uint
 	for _, model := range sessionList {
-		if len(model.ChatList) <= 1 {
+		if len(model.ChatList) <= 0 {
 			ok = true
+			sessionID = model.ID
 		}
 	}
 	if ok {
-		response.FailWithMessage("已存在新的会话", c)
+		response.Ok(sessionID, "已存在新的会话", c)
 		return
 	}
 
