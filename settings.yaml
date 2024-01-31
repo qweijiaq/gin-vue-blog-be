@@ -20,10 +20,10 @@ site_info:
   created_at: "2024-01-01"
   bei_an: 你的备案号
   title: 与蜗牛漫步
-  qq_image: /uploads/file/Gopher/qq_20240108221653.jpg
+  qq_image: ""
   version: 2.0.0
   email: 你的邮箱
-  wechat_image: /uploads/file/Gopher/wechat_20240108221659.jpg
+  wechat_image: ""
   name: 与蜗牛漫步
   job: 全栈开发
   addr: 地址
