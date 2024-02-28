@@ -21,7 +21,7 @@ type LogFormatter struct{}
 
 // Format 实现 Formatter(entry *logrus.Entry) ([]byte, error) 接口
 func (t *LogFormatter) Format(entry *logrus.Entry) ([]byte, error) {
-	//根据不同的 level 去展示颜色
+	// 根据不同的 level 去展示颜色
 	var levelColor int
 	switch entry.Level {
 	case logrus.DebugLevel, logrus.TraceLevel:

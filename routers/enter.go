@@ -14,14 +14,21 @@ type RouterGroup struct {
 }
 
 func InitRouter() *gin.Engine {
-	gin.SetMode(global.Config.System.Env)
+	gin.SetMode(global.Config.System.Env) // 设置项目的环境模式，可以时开发模式 dev 或线上模式 release
 	router := gin.Default()
 
 	router.Use(middleware.LogMiddleWare())
+	// 保证后面上传的图片可以访问
+	// 第一个参数是 web 的访问别名  第二个参数是内部的映射目录
+	// 线上如果有 Nginx，这一步可以省略
 	router.StaticFS("uploads", http.Dir("uploads"))
+
 	router.GET("/swagger/*any", gs.WrapHandler(swaggerFiles.Handler))
+
+	// 创建一个以 api 开头的路由分组 apiGroup -- 用于管理所有的路由
 	apiRouterGroup := router.Group("api")
 
+	// 又将这个路由分组赋给了 RouterGroup
 	routerGroupApp := RouterGroup{apiRouterGroup}
 	// 系统配置 API
 	routerGroupApp.SettingsRouter()
