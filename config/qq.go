@@ -8,6 +8,7 @@ type QQ struct {
 	Redirect string `json:"redirect" yaml:"redirect"` // 登录之后的回调地址
 }
 
+// GetPath 得到 QQ 第三方登录的路径
 func (q QQ) GetPath() string {
 	if q.Key == "" || q.AppID == "" || q.Redirect == "" {
 		return ""

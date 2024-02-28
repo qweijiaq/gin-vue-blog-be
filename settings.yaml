@@ -18,21 +18,21 @@ system:
   env: release
 site_info:
   created_at: "2024-01-01"
-  bei_an: 你的备案号
-  title: 与蜗牛漫步
+  bei_an: "你的备案号"
+  title: "GopherBlog"
   qq_image: ""
   version: 2.0.0
-  email: 你的邮箱
+  email: "你的邮箱"
   wechat_image: ""
-  name: 与蜗牛漫步
-  job: 全栈开发
-  addr: 地址
-  slogan: 个人博客
-  slogan_en: GOPHERBLOG
-  web: 博客地址
-  csdn_url: CSDN 地址
-  gitee_url: Gitee地址
-  github_url: GitHub地址
+  name: "与蜗牛漫步"
+  job: "全栈开发"
+  addr: "地址"
+  slogan: "个人博客"
+  slogan_en: "GOPHERBLOG"
+  web: "博客地址"
+  csdn_url: "CSDN 地址"
+  gitee_url: "Gitee地址"
+  github_url: "GitHub地址"
 upload:
   size: 6
   path: uploads/file
@@ -46,8 +46,8 @@ qi_niu:
   secret_key: "secretKey"
   bucket: "bucket名"
   cdn: "CDN加速域名"
-  zone: 地区
-  prefix: 前缀
+  zone: "地区"
+  prefix: "前缀"
   size: 6 # 最大上传图片大小，单位 M
 email:
   host: smtp.qq.com
@@ -83,7 +83,7 @@ chat_group:
   isMd: true
 gaode:
   enable: true
-  key: 高德对应的key
+  key: "高德对应的key"
 big_model:
   setting:
     name: "qwen" # eg. qwen -> 通义千问
@@ -113,7 +113,7 @@ big_model:
       value: chatgpt
       disabled: true
   session_setting: # 会话
-    chat_scope:
-    session_scope:
-    day_scope:
+    chat_scope: 2
+    session_scope: 3
+    day_scope: 100
 

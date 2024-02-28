@@ -15,11 +15,11 @@ const ConfigFile = "settings_copy.yaml"
 // InitConf 读取 YAML 文件的配置
 func InitConf() {
 	c := &config.Config{}
-	yamlConf, err := ioutil.ReadFile(ConfigFile)
+	yamlConf, err := ioutil.ReadFile(ConfigFile) // 读取 YAML 文件
 	if err != nil {
 		panic(fmt.Errorf("读取 YAML 文件发生错误: %s", err))
 	}
-	err = yaml.Unmarshal(yamlConf, c)
+	err = yaml.Unmarshal(yamlConf, c) // 反序列化
 	if err != nil {
 		log.Fatalf("反序列化 YAML 文件发生错误: %v", err)
 	}

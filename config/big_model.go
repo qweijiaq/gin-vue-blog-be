@@ -1,12 +1,12 @@
 package config
 
 type Setting struct {
-	Name            string `yaml:"name" json:"name"`
-	Enable          bool   `yaml:"enable" json:"enable"`
-	Order           int    `yaml:"order" json:"order"`
-	Title           string `yaml:"title" json:"title"`
-	Prompt          string `yaml:"prompt" json:"prompt"`
-	Slogan          string `yaml:"slogan" json:"slogan"`
+	Name            string `yaml:"name" json:"name"`     // 大模型名称
+	Enable          bool   `yaml:"enable" json:"enable"` // 是否启用
+	Order           int    `yaml:"order" json:"order"`   // 排序
+	Title           string `yaml:"title" json:"title"`   // 标题
+	Prompt          string `yaml:"prompt" json:"prompt"` // 提示词
+	Slogan          string `yaml:"slogan" json:"slogan"` // Slogan
 	AccessKeyId     string `yaml:"access_key_id" json:"access_key_id"`
 	AccessKeySecret string `yaml:"access_key_secret" json:"access_key_secret"`
 	AgentKey        string `yaml:"agent_key" json:"agent_key"`

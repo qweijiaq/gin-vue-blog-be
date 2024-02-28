@@ -11,7 +11,7 @@ import (
 )
 
 var (
-	Config   *config.Config
+	Config   *config.Config // 配置
 	DB       *gorm.DB
 	Log      *logrus.Logger
 	MysqlLog logger.Interface
